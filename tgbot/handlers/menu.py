@@ -1,9 +1,14 @@
 from aiogram import types, Dispatcher
+from aiogram.dispatcher.storage import FSMContext
 
 from tgbot.keyboards.main_menu import main_menu_keyboard
+from tgbot.states import NewTaskState
 
-
-async def main_menu(instance: types.CallbackQuery | types.Message):
+async def main_menu(
+        instance: types.CallbackQuery | types.Message,
+        state: FSMContext
+        ):
+    await state.reset_state(with_data=True)
     text = [
             "Hi, {}!",
             "This bot is your task manager.",
@@ -17,9 +22,7 @@ async def main_menu(instance: types.CallbackQuery | types.Message):
             ]
     if isinstance(instance, types.CallbackQuery):
         await instance.message.edit_text(
-                text="\n".join(text[3:7])
-                )
-        await instance.message.edit_reply_markup(
+                text="\n".join(text[3:7]),
                 reply_markup=main_menu_keyboard
                 )
     if isinstance(instance, types.Message):
@@ -34,7 +37,9 @@ async def main_menu(instance: types.CallbackQuery | types.Message):
 def register_main_menu(dp: Dispatcher):
     dp.register_callback_query_handler(
             main_menu,
-            text="main_menu")
+            text="main_menu",
+            state="*")
     dp.register_message_handler(
             main_menu,
-            commands=["start"])
+            commands=["start"],
+            state="*")

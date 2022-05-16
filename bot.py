@@ -10,6 +10,11 @@ from tgbot.filters.admin import AdminFilter
 from tgbot.handlers import (
         register_faq,
         register_main_menu,
+        register_task_date,
+        register_task_description,
+        register_task_enter,
+        register_task_name,
+        register_task_region,
         )
 from tgbot.middlewares.db import DbMiddleware
 
@@ -18,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 def register_all_middlewares(dp):
     dp.setup_middleware(DbMiddleware())
-
+    
 
 def register_all_filters(dp):
     dp.filters_factory.bind(AdminFilter)
@@ -27,7 +32,11 @@ def register_all_filters(dp):
 def register_all_handlers(dp):
     register_faq(dp)
     register_main_menu(dp)
-
+    register_task_enter(dp)
+    register_task_name(dp)
+    register_task_description(dp)
+    register_task_region(dp)
+    register_task_date(dp)
 
 async def main():
     logging.basicConfig(

@@ -31,9 +31,7 @@ async def faq(cb: types.CallbackQuery):
             "A: SHIB (ERC20) - <code>0xad237da7905e41feaf017d7f02f0f5b49e422d7d</code>"
             ]
     await cb.message.edit_text(
-            text="\n".join(text)
-            )
-    await cb.message.edit_reply_markup(
+            text="\n".join(text),
             reply_markup=back_to_main_menu_keyboard
             )
 
