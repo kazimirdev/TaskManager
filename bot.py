@@ -11,6 +11,7 @@ from tgbot.handlers import (
         register_current_page_error,
         register_faq,
         register_main_menu,
+        register_show_current_task,
         register_show_first_task,
         register_task_date,
         register_task_description,
@@ -35,6 +36,7 @@ def register_all_handlers(dp):
     register_faq(dp)
     register_main_menu(dp)
     register_current_page_error(dp)
+    register_show_current_task(dp)
     register_show_first_task(dp)
     register_task_enter(dp)
     register_task_name(dp)

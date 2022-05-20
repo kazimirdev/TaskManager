@@ -1,1 +1,1 @@
-from .list import register_current_page_error, register_show_first_task
+from .list import register_current_page_error, register_show_current_task, register_show_first_task 
