@@ -8,8 +8,10 @@ from aiogram.contrib.fsm_storage.redis import RedisStorage2
 from tgbot.config import load_config
 from tgbot.filters.admin import AdminFilter
 from tgbot.handlers import (
+        register_current_page_error,
         register_faq,
         register_main_menu,
+        register_show_first_task,
         register_task_date,
         register_task_description,
         register_task_enter,
@@ -32,6 +34,8 @@ def register_all_filters(dp):
 def register_all_handlers(dp):
     register_faq(dp)
     register_main_menu(dp)
+    register_current_page_error(dp)
+    register_show_first_task(dp)
     register_task_enter(dp)
     register_task_name(dp)
     register_task_description(dp)

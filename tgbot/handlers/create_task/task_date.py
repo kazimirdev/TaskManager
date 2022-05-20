@@ -1,7 +1,6 @@
 import asyncio
 import sqlite3
-from datetime import datetime, timedelta
-from pytz import timezone
+from datetime import datetime
 from random import randint
 
 from aiogram import types, Bot, Dispatcher
@@ -43,9 +42,7 @@ async def task_date(
                 )) == message.text + ":00":
             await state.update_data({"answer_date": message.text})
             # It's adding tasks to database
-            task_id = 2147483647 - int(message.from_user.id) + randint(
-                    1,
-                    1000000000)
+            task_id = int(str(message.from_user.id) + str(message.message_id))
             name = data.get("answer_name")
             description = data.get("answer_description")
             tz = data.get("answer_timezone")
