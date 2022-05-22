@@ -25,13 +25,13 @@ async def task_name(message: types.Message, state: FSMContext):
         text[0] = "Write the name of the task"
         text[-2] = "Name: Lenght can't be more than 256 symblols! Try again."
 
+    await message.delete()
     await Bot(token=token).edit_message_text(
             chat_id=message.chat.id,
             message_id=data.get("name_id"),
             text="\n".join(text),
             reply_markup=back_to_main_menu_keyboard
             )
-    await message.delete()
 
 
 def register_task_name(dp: Dispatcher):

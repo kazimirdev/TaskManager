@@ -18,13 +18,13 @@ async def task_description(message: types.Message, state: FSMContext):
             f"Description: {data.get('answer_description')}",
             "Timezone: "
             ]
+    await message.delete()
     await Bot(token=token).edit_message_text(
             chat_id=message.chat.id,
             message_id=data.get("name_id"),
             text="\n".join(text),
             reply_markup=back_to_main_menu_keyboard
             )
-    await message.delete()
     await NewTaskState.Region.set()
 
 
