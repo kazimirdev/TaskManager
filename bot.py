@@ -9,6 +9,7 @@ from tgbot.config import load_config
 from tgbot.filters.admin import AdminFilter
 from tgbot.handlers import (
         register_current_page_error,
+        register_del_task,
         register_faq,
         register_main_menu,
         register_show_current_task,
@@ -35,6 +36,7 @@ def register_all_filters(dp):
 def register_all_handlers(dp):
     register_faq(dp)
     register_main_menu(dp)
+    register_del_task(dp)
     register_current_page_error(dp)
     register_show_current_task(dp)
     register_show_first_task(dp)

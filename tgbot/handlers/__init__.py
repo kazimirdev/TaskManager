@@ -1,3 +1,4 @@
+from .del_task import *
 from .create_task import *
 from .show_task import *
 

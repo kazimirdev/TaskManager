@@ -1,5 +1,3 @@
-import sqlite3
-
 from aiogram import types, Bot, Dispatcher
 
 from tgbot.config import load_config
@@ -13,8 +11,10 @@ async def show_first_task(cb: types.CallbackQuery):
     user_id = cb.from_user.id
 
     dt = get_task(user_id=user_id)
-    print(user_id)
-    print(dt)
+    print("--------------")
+    print("User ID: ", user_id)
+    print("Data from task: ", dt)
+    print("--------------")
 
     if len(dt) == 0:
         await cb.answer(
