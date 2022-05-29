@@ -20,9 +20,10 @@ async def task_date(
         ):
     token = load_config(".env").tg_bot.token
     data = await state.get_data()
+    date_example = datetime.now().strftime("%Y-%m-%d %H:%M")
     text = [
             "Write the date when I'll send you notification:",
-            "(I understand only this format: YYYY-MM-DD hh:mm)",
+            f"(For example: {date_example})",
             " ",
             f"Name: {data.get('answer_name')}",
             f"Description: {data.get('answer_description')}",
@@ -71,7 +72,7 @@ async def task_date(
             # Tasks has beed added
             text[0] = "Successful!"
             text[1] = "I'm saving this tasks, wait please..."
-            text[-1] = f"Date: {message.text}"
+            text[-1] = f"Datetime: {message.text}"
             await Bot(token=token).edit_message_text(
                     chat_id=message.chat.id,
                     message_id=data.get("name_id"),
@@ -79,7 +80,6 @@ async def task_date(
                     reply_markup=back_to_main_menu_keyboard
                     )
             await message.delete()
-            await asyncio.sleep(1)
             text[0] = "Task has been saved!"
             text[1] = "Press the button to return to the main menu"
             await Bot(token=token).edit_message_text(
@@ -92,7 +92,7 @@ async def task_date(
         else:
             raise ValueError
     except ValueError:
-        text[-1] = "Date: Error! Try again."
+        text[-1] = "Datetime: Error! Try again."
         await Bot(token=token).edit_message_text(
                 chat_id=message.chat.id,
                 message_id=data.get("name_id"),

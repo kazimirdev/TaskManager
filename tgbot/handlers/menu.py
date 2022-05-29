@@ -1,8 +1,10 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher.storage import FSMContext
 
+from tgbot.config import load_config
 from tgbot.keyboards.main_menu import main_menu_keyboard
-from tgbot.states import NewTaskState
+from tgbot.services import db_check
+
 
 async def main_menu(
         instance: types.CallbackQuery | types.Message,
@@ -26,6 +28,7 @@ async def main_menu(
                 reply_markup=main_menu_keyboard
                 )
     if isinstance(instance, types.Message):
+        db_check(load_config().db.path)
         await instance.answer(
                 text="\n".join(t.format(
                     instance.from_user.full_name

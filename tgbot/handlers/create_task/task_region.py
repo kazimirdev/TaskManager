@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from aiogram import types, Bot, Dispatcher
 from aiogram.dispatcher.storage import FSMContext
 
@@ -39,8 +41,9 @@ async def task_region(message: types.Message, state: FSMContext):
         text[0] = "Write city from your timezone:"
         text[-1] = "Timezone: I don't know this region, try again"
     else:
+        example = datetime.now().strftime("%Y-%m-%d %H:%M")
         await state.update_data({"answer_timezone": city})
-        text[0] = "Write the date (%Y-%m-%D %H:%M) when I'll send you notification:"
+        text[0] = f"Write the datetime (For example: {example}) when I'll send you notification:"
         text[-1] = f"Timezone: {city}"
         text.append("Date:")
         await NewTaskState.Date.set()
