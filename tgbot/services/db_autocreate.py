@@ -28,4 +28,3 @@ def db_check(path):
     except sqlite3.OperationalError:
         pass
 
-db_check("db/main.db")

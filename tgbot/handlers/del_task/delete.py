@@ -10,7 +10,7 @@ async def del_task(cb: types.CallbackQuery):
     prefix = cb.message.text.split("\n")[0]
     t_id = int(cb.message.text.split(" ")[-1])
     token = load_config().tg_bot.token
-    db = sqlite3.connect("db/main.db")
+    db = sqlite3.connect(load_config().db.path)
     print("------------")
     print("t_id: ", t_id)
     print("------------")

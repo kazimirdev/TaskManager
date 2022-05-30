@@ -1,7 +1,5 @@
-import asyncio
 import sqlite3
 from datetime import datetime
-from random import randint
 
 from aiogram import types, Bot, Dispatcher
 from aiogram.dispatcher import FSMContext
@@ -54,7 +52,7 @@ async def task_date(
                     "Europe/Warsaw"
                     )
             sent_status = (False if server_date > datetime.now() else None)
-            db = sqlite3.connect("db/main.db")
+            db = sqlite3.connect(load_config().db.path)
             db.execute(f'insert into tasks values (?, ?, ?, ?, ?, ?, ?, ?)', 
                         (
                         int(message.from_user.id),
