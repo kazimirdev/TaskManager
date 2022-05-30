@@ -18,5 +18,5 @@ main_menu_keyboard = InlineKeyboardMarkup(
                 callback_data="faq"),
             InlineKeyboardButton(
                 text="Sourse code",
-                url="https://github.com/Greenboyisyourdream/task_manager"
+                url="https://github.com/Greenboyisyourdream/TaskManager"
                 )]])
