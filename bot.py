@@ -64,7 +64,7 @@ async def main():
     bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
     dp = Dispatcher(bot, storage=storage)
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(send_notification, "interval", seconds=30, args=(bot,))
+    scheduler.add_job(send_notification, "interval", seconds=10, args=(bot,))
 
     bot['config'] = config
 
