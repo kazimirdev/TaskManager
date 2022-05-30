@@ -7,6 +7,7 @@ from tgbot.services.get_len_tasks import get_len_task
 
 
 async def show_first_task(cb: types.CallbackQuery):
+    await cb.answer()
     token = load_config().tg_bot.token
     user_id = cb.from_user.id
 
@@ -42,6 +43,7 @@ async def current_page_error(cb: types.CallbackQuery):
 
 
 async def show_current_task(cb: types.CallbackQuery, callback_data: dict):
+    await cb.answer()
     token = load_config().tg_bot.token
     current_task = int(callback_data.get("page"))
     user_id = cb.from_user.id

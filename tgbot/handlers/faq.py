@@ -4,6 +4,7 @@ from tgbot.keyboards.back_to_main_menu_keyboard import back_to_main_menu_keyboar
 
 
 async def faq(cb: types.CallbackQuery):
+    await cb.answer()
     text = [
             "FAQ:",
             "Q: How long does bot keep tasks?",

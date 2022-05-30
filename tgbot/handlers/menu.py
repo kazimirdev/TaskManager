@@ -23,6 +23,7 @@ async def main_menu(
             "The author wishes you happiness in using the bot!"
             ]
     if isinstance(instance, types.CallbackQuery):
+        await instance.answer()
         await instance.message.edit_text(
                 text="\n".join(text[3:7]),
                 reply_markup=main_menu_keyboard

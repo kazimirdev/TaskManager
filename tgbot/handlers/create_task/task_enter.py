@@ -8,6 +8,7 @@ from tgbot.states import NewTaskState
 
 
 async def task_enter(cb: types.CallbackQuery, state: FSMContext):
+    await cb.answer()
     text = "Write the name of the task:"
     await cb.message.edit_text(
             text=text,

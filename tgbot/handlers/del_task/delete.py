@@ -7,6 +7,7 @@ from tgbot.keyboards.main_menu import main_menu_keyboard
 
 
 async def del_task(cb: types.CallbackQuery):
+    await cb.answer()
     prefix = cb.message.text.split("\n")[0]
     t_id = int(cb.message.text.split(" ")[-1])
     token = load_config().tg_bot.token

@@ -2,6 +2,7 @@ from aiogram import types, Dispatcher
 
 
 async def del_message(cb: types.CallbackQuery):
+    await cb.answer()
     await cb.message.delete()
 
 
